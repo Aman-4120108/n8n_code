@@ -7,7 +7,7 @@ RUN npm install -g n8n
 RUN mkdir -p /home/node/.n8n && \
     chown -R node:node /home/node
 
-RUN pip3 install \
+RUN pip3 install --break-system-packages \
     requests \
     pandas \
     openpyxl \
