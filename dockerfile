@@ -1,15 +1,14 @@
-FROM n8nio/n8n:latest
+FROM node:22-alpine
 
-USER root
+RUN apk add --no-cache python3 py3-pip
 
-RUN mkdir -p /usr/local/python && \
-    wget https://www.python.org/ftp/python/3.12.11/Python-3.12.11.tgz && \
-    tar -xzf Python-3.12.11.tgz && \
-    cd Python-3.12.11 && \
-    ./configure --enable-optimizations && \
-    make -j$(nproc) && \
-    make install
+RUN npm install -g n8n
 
-RUN python3 --version
+RUN mkdir -p /home/node/.n8n && \
+    chown -R node:node /home/node
 
 USER node
+
+EXPOSE 5678
+
+CMD ["n8n", "start"]
