@@ -7,6 +7,13 @@ RUN npm install -g n8n
 RUN mkdir -p /home/node/.n8n && \
     chown -R node:node /home/node
 
+RUN pip3 install \
+    requests \
+    pandas \
+    openpyxl \
+    beautifulsoup4 \
+    lxml
+
 USER node
 
 EXPOSE 5678

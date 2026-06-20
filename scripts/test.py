@@ -1,6 +1,8 @@
+import sys
 import json
 
+name = sys.argv[1]
+
 print(json.dumps({
-    "status": "success",
-    "message": "Hello from Python"
+    "greeting": f"Hello {name}"
 }))
