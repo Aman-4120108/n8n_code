@@ -8,7 +8,15 @@ services:
       - "5678:5678"
 
     environment:
-      - TZ=Asia/Kolkata
+    - TZ=Asia/Kolkata
+    - N8N_HOST=localhost
+    - N8N_PORT=5678
+    - N8N_PROTOCOL=http
+    - N8N_COMMUNITY_PACKAGES_ALLOW_TOOL_USAGE=true
+    - NODE_FUNCTION_ALLOW_BUILTIN=*
+    - NODE_FUNCTION_ALLOW_EXTERNAL=*
+    - N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
+    - N8N_RUNNERS_ENABLED=true
 
     volumes:
       - ./data:/home/node/.n8n
